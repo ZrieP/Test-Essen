@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Drag and Drop Persons</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <style>     
+      .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        height: 800px; 
+        border: 0px;
+        min-width: 1050px;
+      }
+
+      .rectangles {
+        display: flex;
+        flex-direction: column; 
+        align-items: flex-start;
+        width: 60%;
+        height: 100px;
+        margin: 10px;
+      }
+
+      .persons {
+        display: flex;
+        flex-direction: column; 
+        align-items: flex-start;
+        width: 40%;
+        align-items: center;
+      }
+
+      .person {
+
+        width: 30%;
+        min-width: 120px;
+        height: 50px;
+        overflow: hidden;
+        min-width: fit-content;
+        background-color: lightblue; 
+        text-align: center;
+        line-height: 50px;
+        margin: 10px;
+        cursor: move;
+        border: 1px solid black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+      }
+
+      .rectangle {
+        width: 90%;
+        height: 110px;
+        border: 1px solid black;
+        margin: 10px;
+        background-color: rgb(233, 233, 233); 
+      }
+
+      .image {
+        height: 100px;
+        padding: 2px;
+      }
+
+      .delete-btn{
+        background-color: #ff6060;
+      }
+
+   </style>
+</head>
+
+<body>
+  <h1> Pizza Bestell-Liste</h1>
+   
+  <div class="container">
+
+    <div class="rectangles">
+      <div id="rectangle1" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)"> <img class="image" src="Test-Bild.jpg"> Speise1 <br> </div>
+      <div id="rectangle2" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)"> <img class="image" src="Test-Bild.jpg"> Speise2 <br> </div>
+      <div id="rectangle3" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)"><!-- <img class="image" src=""> -->Speise3 <br> </div>
+      <div id="rectangle4" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)"><!-- <img class="image" src=""> -->Speise4 <br> </div>
+      <div id="rectangle5" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)"><!-- <img class="image" src=""> -->Speise5 <br> </div>
+      <div id="rectangle6" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)"><!-- <img class="image" src=""> -->Speise6 <br> </div>
+      <div id="rectangle7" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)"><!-- <img class="image" src=""> -->Speise7 <br> </div>
+      <div id="rectangle8" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)"><!-- <img class="image" src=""> -->Speise8 <br> </div>
+      <div id="rectangle9" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)"><!-- <img class="image" src=""> -->Speise9 <br> </div>
+      <div id="rectangle10" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)"><!-- <img class="image" src=""> -->Speise10 <br> </div>
+      <!--                                                                                                    L> Einfügen von Bildern   |
+                                                                                                                                        L> Individuelle Bennenung der Speisen
+      -->
+    </div>
+  
+    <div class="persons">
+  
+      <div id="addPerson">
+        <input type="text" id="newPersonName" placeholder="Enter name">
+        <button onclick="addNewPerson()">Add Person</button>
+      </div>
+  
+      <div id="person1" class="person" draggable="true">Person 1 <button class="reset-btn" onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div> 
+      <div id="person2" class="person" draggable="true">Person 2 <button class="reset-btn" onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+      <div id="person3" class="person" draggable="true">Person 3 <button class="reset-btn" onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+      <div id="person4" class="person" draggable="true">Person 4 <button class="reset-btn" onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+      <div id="person5" class="person" draggable="true">Person 5 <button class="reset-btn" onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+      <div id="person6" class="person" draggable="true">Person 6 <button class="reset-btn" onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+      <div id="person7" class="person" draggable="true">Person 7 <button class="reset-btn" onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+      <div id="person8" class="person" draggable="true">Person 8 <button class="reset-btn" onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+      <div id="person9" class="person" draggable="true">Person 9 <button class="reset-btn" onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+      <div id="person10" class="person" draggable="true">Person 10 <button class="reset-btn" onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+      <!--                                               L> individuelle Nameneingabe 
+        Wenn weitere Personen als Default hinzugefügt werden! Im JavaScript teil Zeile 77 neuen Startwert der IDs festlegen -->
+      
+    </div>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
