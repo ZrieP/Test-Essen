@@ -52,11 +52,22 @@
     }
 
     .rectangle {
+      position: relative;		 /* Position Zaehler */ 
       width: 90%;
       height: 110px;
       border: 1px solid black;
       margin: 10px;
       background-color: rgb(233, 233, 233);
+    }
+
+    .counter {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background-color: #fff;
+      padding: 2px 5px;
+      border: 1px solid #000;
+      border-radius: 5px;
     }
 
     .image {
@@ -77,34 +88,42 @@
   <div class="container">
 
     <div class="rectangles">
-      <div id="rectangle1" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)"> <img class="image"
-            src="https://raw.githubusercontent.com/ZrieP/Test-Essen/main/Bestellliste2.1/Bilder/Test-Bild.jpg"> Speise1 <br> </div>
-      <div id="rectangle2" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)"> <img class="image"
-            src="https://raw.githubusercontent.com/ZrieP/Test-Essen/main/Bestellliste2.1/Bilder/Test-Bild.jpg"> Speise2 <br> </div>
-      <div id="rectangle3" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)"> <!-- <img class="image"
-            src=""> -->Speise3 <br> </div>
-      <div id="rectangle4" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)"> <!-- <img class="image"
-            src=""> -->Speise4 <br> </div>
-      <div id="rectangle5" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)"><!-- <img class="image"
-            src=""> -->Speise5 <br> </div>
-      <div id="rectangle6" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)"><!-- <img class="image"
-            src=""> -->Speise6 <br> </div>
-      <div id="rectangle7" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)"><!-- <img class="image"
-            src=""> -->Speise7 <br> </div>
-      <div id="rectangle8" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)"><!-- <img class="image"
-            src=""> -->Speise8 <br> </div>
-      <div id="rectangle9" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)"><!-- <img class="image"
-            src=""> -->Speise9 <br> </div>
-      <div id="rectangle10" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)"><!-- <img class="image"
-            src=""> -->Speise10 <br> </div>
-      <!--                                                                                             L> Bilder hier einfügen                                     
-                         L> Speisen Benennen 
-          Bild einfügen:
+      <div id="rectangle1" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <span class="counter" id="counter-rectangle1">0</span>
+        <img class="image" src="https://raw.githubusercontent.com/ZrieP/Test-Essen/main/Bestellliste2.1/Bilder/Test-Bild.jpg"> Speise1 <br></div>
+      <div id="rectangle2" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <span class="counter" id="counter-rectangle2">0</span>
+        <img class="image" src="https://raw.githubusercontent.com/ZrieP/Test-Essen/main/Bestellliste2.1/Bilder/Test-Bild.jpg"> Speise2 <br></div>
+      <div id="rectangle3" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <span class="counter" id="counter-rectangle3">0</span>
+        <!-- <img class="image" src=""> -->Speise3 <br></div>
+      <div id="rectangle4" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <span class="counter" id="counter-rectangle4">0</span>
+        <!-- <img class="image" src=""> -->Speise4 <br></div> 
+      <div id="rectangle5" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <span class="counter" id="counter-rectangle5">0</span>
+        <!-- <img class="image" src=""> -->Speise5 <br></div>
+      <div id="rectangle6" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <span class="counter" id="counter-rectangle6">0</span>
+        <!-- <img class="image" src=""> -->Speise6 <br></div>
+      <div id="rectangle7" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <span class="counter" id="counter-rectangle7">0</span>
+        <!-- <img class="image" src=""> -->Speise7 <br></div>
+      <div id="rectangle8" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <span class="counter" id="counter-rectangle8">0</span>
+        <!-- <img class="image" src=""> -->Speise8 <br></div>
+      <div id="rectangle9" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <span class="counter" id="counter-rectangle9">0</span>
+        <!-- <img class="image" src=""> -->Speise9 <br></div>
+      <div id="rectangle10" class="rectangle" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <span class="counter" id="counter-rectangle10">0</span>
+        <!-- <img class="image" src=""> -->Speise10 <br></div>
+
+      <!--Bild einfügen:
           -> In GIT mit in Bilder ordner
           -> Bild in GIT öffnen
           -> Rechtsklick, Bild in neuem Tap öffnen
-          -> Link kopieren & als scr:" " einfügen
-      -->
+          -> Link kopieren & als scr:" " einfügen -->
     </div>
 
     <div class="persons">
@@ -115,34 +134,48 @@
       </div>
 
       <div id="person1" class="person" draggable="true">Person 1 <button class="reset-btn"
-          onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
-      <div id="person2" class="person" draggable="true">Person 2 <button class="reset-btn"
-          onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
-      <div id="person3" class="person" draggable="true">Person 3 <button class="reset-btn"
-          onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
-      <div id="person4" class="person" draggable="true">Person 4 <button class="reset-btn"
-          onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
-      <div id="person5" class="person" draggable="true">Person 5 <button class="reset-btn"
-          onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
-      <div id="person6" class="person" draggable="true">Person 6 <button class="reset-btn"
-          onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
-      <div id="person7" class="person" draggable="true">Person 7 <button class="reset-btn"
-          onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
-      <div id="person8" class="person" draggable="true">Person 8 <button class="reset-btn"
-          onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
-      <div id="person9" class="person" draggable="true">Person 9 <button class="reset-btn"
-          onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
-      <div id="person10" class="person" draggable="true">Person 10 <button class="reset-btn"
-          onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+        onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+    <div id="person2" class="person" draggable="true">Person 2 <button class="reset-btn"
+        onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+    <div id="person3" class="person" draggable="true">Person 3 <button class="reset-btn"
+        onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+    <div id="person4" class="person" draggable="true">Person 4 <button class="reset-btn"
+        onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+    <div id="person5" class="person" draggable="true">Person 5 <button class="reset-btn"
+        onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+    <div id="person6" class="person" draggable="true">Person 6 <button class="reset-btn"
+        onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+    <div id="person7" class="person" draggable="true">Person 7 <button class="reset-btn"
+        onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+    <div id="person8" class="person" draggable="true">Person 8 <button class="reset-btn"
+        onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+    <div id="person9" class="person" draggable="true">Person 9 <button class="reset-btn"
+        onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+    <div id="person10" class="person" draggable="true">Person 10 <button class="reset-btn"
+        onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
       <!--                                               L> individuelle Nameneingabe 
-            Wenn weitere Personen als Default hinzugefügt werden! Im JavaScript teil Zeile 77 neuen Startwert der IDs festlegen
-            -->
+            Wenn weitere Personen als Default hinzugefügt werden! Im JavaScript teil neuen Startwert der IDs festlegen -->
 
     </div>
 
   </div>
 
   <script>
+
+// Counter for each rectangle
+let rectangleCounters = {};
+
+function updateAllCounters() {
+  for (let i = 1; i <= 10; i++) {
+    const rectangleId = `rectangle${i}`;
+    const counterElement = document.getElementById(`counter-${rectangleId}`);
+    if (counterElement) {
+      const personsInRectangle = document.getElementById(rectangleId).querySelectorAll('.person');
+      counterElement.textContent = personsInRectangle.length;
+    }
+  }
+}
+
     //Drag and Drop
     const persons = document.querySelectorAll('.person');
     const rectangles = document.querySelectorAll('.rectangle');
@@ -188,6 +221,9 @@
       this.style.border = '1px solid black';
       this.appendChild(draggedPerson);
 
+      // Update counter after drop
+      updateAllCounters();
+
       //sotierung der Flächen bei mehreren Personen + anpassung der Größe 
       const personsInRectangle = this.querySelectorAll('.person');
       const rows = Math.ceil(personsInRectangle.length / 3);
@@ -200,7 +236,7 @@
       currentRow.style.display = 'flex';
 
       personsInRectangle.forEach((person, index) => {
-        if (index > 0 && cash >= 50) {
+        if (index > 0 && cash >= 40) {
           this.appendChild(currentRow);
           currentRow = document.createElement('div');
           currentRow.style.display = 'flex';
@@ -267,11 +303,26 @@
 
       const originalPersonIndex = Array.from(personsContainer.children).indexOf(originalPerson);
       personsContainer.insertBefore(originalPerson, personsContainer.children[originalPersonIndex]);
+      // Update counter after deleting a person
+      updateAllCounters();
     }
 
     function deletePerson(button) {
       const person = button.parentNode;
       person.remove();
+      // Update counter after deleting a person
+      updateAllCounters();
+    }
+
+    // Reset all counters
+    function resetCounters() {
+      rectangleCounters = {};
+      document.querySelectorAll('.rectangle').forEach(rectangle => {
+        const counterElement = document.getElementById(`counter-${rectangle.id}`);
+        if (counterElement) {
+          counterElement.textContent = '0';
+        }
+      });
     }
   </script>
 </body>
