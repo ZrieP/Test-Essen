@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Drag and Drop Persons</title>
+  
+  <style>
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      height: 800px;
+      border: 0px;
+      min-width: 1050px;
+    }
+
+    .rectangles {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 60%;
+      height: 100px;
+      margin: 10px;
+    }
+
+    .persons {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      width: 40%;
+      align-items: center;
+    }
+
+    .person {
+
+      width: 30%;
+      min-width: 120px;
+      height: 50px;
+      overflow: hidden;
+      min-width: fit-content;
+      background-color: lightblue;
+      text-align: center;
+      line-height: 50px;
+      margin: 10px;
+      cursor: move;
+      border: 1px solid black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .rectangle {
+      position: relative;		 /* Position Zaehler */ 
+      width: 90%;
+      height: 110px;
+      border: 1px solid black;
+      margin: 10px;
+      background-color: rgb(233, 233, 233);
+    }
+
+    .counter {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background-color: #fff;
+      padding: 2px 5px;
+      border: 1px solid #000;
+      border-radius: 5px;
+    }
+
+    .image {
+      height: 100px;
+      padding: 2px;
+    }
+
+    .delete-btn {
+      background-color: #ff6060;
+    }
+
+  </style>
+</head>
+
+<body>
+  <h1> Pizza Bestell-Liste</h1>
+
+  <div class="container">
+
+    <div class="rectangles">
+      <div id="rectangle1" class="rectangle" ondrop="drop(event)" ondragover="(event)">
+        <span class="counter" id="counter-rectangle1">0</span>
+        <img class="image" src="https://raw.githubusercontent.com/ZrieP/Test-Essen/main/Bestellliste2.1/Bilder/Test-Bild.jpg"> Speise1 <br></div>
+      <div id="rectangle2" class="rectangle" ondrop="drop(event)" ondragover="(event)">
+        <span class="counter" id="counter-rectangle2">0</span>
+        <img class="image" src="https://raw.githubusercontent.com/ZrieP/Test-Essen/main/Bestellliste2.1/Bilder/Test-Bild.jpg"> Speise2 <br></div>
+      <div id="rectangle3" class="rectangle" ondrop="drop(event)" ondragover="(event)">
+        <span class="counter" id="counter-rectangle3">0</span>
+        <!-- <img class="image" src=""> -->Speise3 <br></div>
+      <div id="rectangle4" class="rectangle" ondrop="drop(event)" ondragover="(event)">
+        <span class="counter" id="counter-rectangle4">0</span>
+        <!-- <img class="image" src=""> -->Speise4 <br></div> 
+      <div id="rectangle5" class="rectangle" ondrop="drop(event)" ondragover="(event)">
+        <span class="counter" id="counter-rectangle5">0</span>
+        <!-- <img class="image" src=""> -->Speise5 <br></div>
+      <div id="rectangle6" class="rectangle" ondrop="drop(event)" ondragover="(event)">
+        <span class="counter" id="counter-rectangle6">0</span>
+        <!-- <img class="image" src=""> -->Speise6 <br></div>
+      <div id="rectangle7" class="rectangle" ondrop="drop(event)" ondragover="(event)">
+        <span class="counter" id="counter-rectangle7">0</span>
+        <!-- <img class="image" src=""> -->Speise7 <br></div>
+      <div id="rectangle8" class="rectangle" ondrop="drop(event)" ondragover="(event)">
+        <span class="counter" id="counter-rectangle8">0</span>
+        <!-- <img class="image" src=""> -->Speise8 <br></div>
+      <div id="rectangle9" class="rectangle" ondrop="drop(event)" ondragover="(event)">
+        <span class="counter" id="counter-rectangle9">0</span>
+        <!-- <img class="image" src=""> -->Speise9 <br></div>
+      <div id="rectangle10" class="rectangle" ondrop="drop(event)" ondragover="(event)">
+        <span class="counter" id="counter-rectangle10">0</span>
+        <!-- <img class="image" src=""> -->Speise10 <br></div>
+
+      <!--Bild einfügen:
+          -> In GIT mit in Bilder ordner
+          -> Bild in GIT öffnen
+          -> Rechtsklick, Bild in neuem Tap öffnen
+          -> Link kopieren & als scr:" " einfügen -->
+    </div>
+
+    <div class="persons">
+
+      <div id="addPerson">
+        <input type="text" id="newPersonName" placeholder="Enter name">
+        <button onclick="addNewPerson()">Add Person</button>
+      </div>
+
+    <div id="person1" class="person" draggable="true">Person 1 <button class="reset-btn"
+        onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+    <div id="person2" class="person" draggable="true">Person 2 <button class="reset-btn"
+        onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+    <div id="person3" class="person" draggable="true">Person 3 <button class="reset-btn"
+        onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+    <div id="person4" class="person" draggable="true">Person 4 <button class="reset-btn"
+        onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+    <div id="person5" class="person" draggable="true">Person 5 <button class="reset-btn"
+        onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+    <div id="person6" class="person" draggable="true">Person 6 <button class="reset-btn"
+        onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+    <div id="person7" class="person" draggable="true">Person 7 <button class="reset-btn"
+        onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+    <div id="person8" class="person" draggable="true">Person 8 <button class="reset-btn"
+        onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+    <div id="person9" class="person" draggable="true">Person 9 <button class="reset-btn"
+        onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+    <div id="person10" class="person" draggable="true">Person 10 <button class="reset-btn"
+        onclick="resetPosition(this)">Reset</button><button class="delete-btn" onclick="deletePerson(this)">X</button></div>
+      <!-- Wenn weitere Personen als Default hinzugefügt werden! Im JavaScript teil neuen Startwert der IDs festlegen -->
+
+    </div>
+
+  </div>
+
+  <script>
+
+// Counter for each rectangle
+let rectangleCounters = {};
+
+function updateAllCounters() {
+  for (let i = 1; i <= 10; i++) {
+    const rectangleId = `rectangle${i}`;
+    const counterElement = document.getElementById(`counter-${rectangleId}`);
+    if (counterElement) {
+      const personsInRectangle = document.getElementById(rectangleId).querySelectorAll('.person');
+      counterElement.textContent = personsInRectangle.length;
+    }
+  }
+}
+
+    //Drag and Drop
+    const persons = document.querySelectorAll('.person');
+    const rectangles = document.querySelectorAll('.rectangle');
+
+    persons.forEach(person => {
+      person.addEventListener('dragstart', dragStart);
+      person.addEventListener('dragend', dragEnd);
+    });
+
+    rectangles.forEach(rectangle => {
+      rectangle.addEventListener('dragover', dragOver);
+      rectangle.addEventListener('dragenter', dragEnter);
+      rectangle.addEventListener('dragleave', dragLeave);
+      rectangle.addEventListener('drop', drop);
+    });
+
+    let draggedPerson = null;
+
+    function dragStart() {
+      draggedPerson = this;
+      setTimeout(() => (this.style.display = 'none'), 0);
+    }
+
+    function dragEnd() {
+      draggedPerson.style.display = 'block';
+      draggedPerson = null;
+    }
+
+    function dragOver(e) {
+      e.preventDefault();
+      this.style.border = '2px dashed black';
+    }
+
+    function dragEnter(e) {
+      e.preventDefault();
+    }
+
+    function dragLeave() {
+      this.style.border = '1px solid black';
+    }
+
+    function drop() {
+      this.style.border = '1px solid black';
+      this.appendChild(draggedPerson);
+
+      // Update counter after drop
+      updateAllCounters();
+      sortPersonsInRectangle(this);
+
+
+    }
+      // Function to apply sorting to the persons within a rectangle
+    function sortPersonsInRectangle(rectangle) {
+      const personsInRectangle = rectangle.querySelectorAll('.person');
+      const rows = Math.ceil(personsInRectangle.length / 3);
+      const newHeight = 350 + (rows - 1) * 50;
+      let cash = 0;
+      rectangle.style.height = `${newHeight}px`;
+
+      const maxPersonsPerRow = 3;
+      let currentRow = document.createElement('div');
+      currentRow.style.display = 'flex';
+
+      personsInRectangle.forEach((person, index) => {
+        if (index > 0 && cash >= 40) {
+          rectangle.appendChild(currentRow);
+          currentRow = document.createElement('div');
+          currentRow.style.display = 'flex';
+          cash = 0;
+        }
+        currentRow.appendChild(person);
+        cash = cash + person.textContent.length;
+      });
+
+      if (currentRow.children.length > 0) {
+        rectangle.appendChild(currentRow);
+      }
+    
+
+      // Save positions to the server
+      savePositions();
+    }
+
+    //Person hinzufügen 
+    let personIdCounter = 11;   // Wenn oben personen als Default ergänz wurden, hier personIDCounter erhöhen
+
+    function addNewPerson() {
+      const newPersonNameInput = document.getElementById('newPersonName');
+      const newPersonName = newPersonNameInput.value.trim();
+
+      if (newPersonName !== '') {
+        const newPerson = document.createElement('div');
+        const personId = `person${personIdCounter}`;
+        newPerson.setAttribute('id', personId);
+        personIdCounter++;
+
+        newPerson.classList.add('person');
+        newPerson.draggable = true;
+        newPerson.textContent = newPersonName;
+
+        const resetButton = document.createElement('button');
+        resetButton.classList.add('reset-btn');
+        resetButton.textContent = 'Reset';
+        resetButton.setAttribute('onclick', 'resetPosition(this)');
+
+        const deleteButton = document.createElement('button');
+        deleteButton.classList.add('delete-btn');
+        deleteButton.textContent = 'X';
+        deleteButton.setAttribute('onclick', 'deletePerson(this)');
+
+        newPerson.appendChild(resetButton);
+        newPerson.appendChild(deleteButton);
+
+        newPerson.addEventListener('dragstart', dragStart);
+        newPerson.addEventListener('dragend', dragEnd);
+
+        document.querySelector('.persons').appendChild(newPerson);
+
+        newPersonNameInput.value = '';
+      }
+      // Save positions to the server
+      savePositions();
+    }
+
+    // functions for resetting position
+
+    function resetPosition(button) {
+      const person = button.parentNode;
+      const originalPerson = document.getElementById(person.id);
+      const personsContainer = document.querySelector('.persons');
+
+      originalPerson.style.display = 'block';
+      originalPerson.style.order = '';
+
+      const originalPersonIndex = Array.from(personsContainer.children).indexOf(originalPerson);
+      personsContainer.insertBefore(originalPerson, personsContainer.children[originalPersonIndex]);
+      // Update counter after deleting a person
+      updateAllCounters();
+
+      // Save positions to the server
+      savePositions();
+    }
+
+    function deletePerson(button) {
+      const person = button.parentNode;
+      person.remove();
+      // Update counter after deleting a person
+      updateAllCounters();
+
+      // Save positions to the server
+      savePositions();
+    }
+
+    // Reset all counters
+    function resetCounters() {
+      rectangleCounters = {};
+      document.querySelectorAll('.rectangle').forEach(rectangle => {
+        const counterElement = document.getElementById(`counter-${rectangle.id}`);
+        if (counterElement) {
+          counterElement.textContent = '0';
+        }
+      });
+    }
+
+    //Speicher Position
+    function savePositions() {
+  const rectangles = document.querySelectorAll('.rectangle');
+  const positions = {};
+
+  rectangles.forEach(rectangle => {
+    const rectangleId = rectangle.id;
+    const personsInRectangle = Array.from(rectangle.querySelectorAll('.person')).map(person => person.id);
+    positions[rectangleId] = personsInRectangle;
+  });
+
+  // Send positions to the server 
+  fetch('save_positions.php', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(positions),
+  })
+    .then(response => response.text())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+    }
+
+
+
+    (error => console.error('Error:', error));
+    
+
+    // Load positions on page load
+    window.onload = function () {
+      loadPositions();
+    };
+
+    // Function to load positions from the server
+    function loadPositions() {
+      fetch('load_positions.php') // Replace 'load_positions.php' with the actual PHP file URL
+        .then(response => response.json())
+        .then(data => {
+          applyPositions(data);
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    // Function to apply positions to the UI
+    function applyPositions(positions) {
+      resetCounters(); // Reset counters before applying new positions
+
+      for (const rectangleId in positions) {
+        const personsInRectangle = positions[rectangleId];
+
+        personsInRectangle.forEach(personId => {
+          const person = document.getElementById(personId);
+          const rectangle = document.getElementById(rectangleId);
+
+          rectangle.appendChild(person);
+        });
+
+        // Update counter after applying positions
+        updateAllCounters();
+      }
+    }
+
+    function applyPositions(positions) {
+      resetCounters(); // Reset counters before applying new positions
+
+      for (const rectangleId in positions) {
+        const personsInRectangle = positions[rectangleId];
+
+        personsInRectangle.forEach(personId => {
+          const person = document.getElementById(personId);
+          const rectangle = document.getElementById(rectangleId);
+
+          rectangle.appendChild(person);
+        });
+
+        // Apply sorting after loading positions
+        sortPersonsInRectangle(document.getElementById(rectangleId));
+
+        // Update counter after applying positions
+        updateAllCounters();
+      }
+    }
+  </script>
+</body>
+
+</html>
